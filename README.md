@@ -86,3 +86,11 @@ mkdir /mnt/vmfs
 sudo vmfs-fuse /dev/sda1 /mnt/vmfs
 ```
 Now go on with this filesystem under /mnt/vmfs/
+
+
+# Copy folders with status
+rsync -r --info=progress2 source des
+
+# copy files
+rsync --info=progress2 source des
+
