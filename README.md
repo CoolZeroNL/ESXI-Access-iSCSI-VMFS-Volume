@@ -14,7 +14,6 @@ sudo iscsiadm -m discovery -t st -p 172.16.20.1
 172.16.20.1:3260,-1 iqn.2005-10.org.freenas.ctl:r2d2target
 172.16.20.1:3260,-1 iqn.2005-10.org.freenas.ctl:esxi
 
-
 ```
 sudo iscsiadm -m node
 ``````
@@ -28,18 +27,17 @@ sudo iscsiadm -m node --targetname "iqn.2005-10.org.freenas.ctl:r2d2target" --po
 Logging in to [iface: default, target: iqn.2005-10.org.freenas.ctl:r2d2target, portal: 172.16.20.1,3260] (multiple)
 Login to [iface: default, target: iqn.2005-10.org.freenas.ctl:r2d2target, portal: 172.16.20.1,3260] successful.
 
-Voer de partitionering, formattering en koppeling van de iSCSI Target uit met de opdrachten fdisk, mkfs.ext3 en mount.
+List disks
 ```
 sudo fdisk -l
 ```
-
 
 # De iSCSI Target ontkoppelen en iSCSI-detectie stoppen
 Het volgende gedeelte beschrijft de ontkoppeling van de iSCSI Target en het stoppen van iSCSI-detectie.
 
 Ontkoppel de iSCSI Target en stop iSCSI-detectie met de opdrachten umount en iscsiadm.
-[root@Synology-FedoraVM mnt]# cd /
-[root@Synology-FedoraVM /]# umount /mnt
+cd /
+umount /mnt/vm
 
 [root@Synology-FedoraVM /]# iscsiadm -m node --targetname" "iqn.2010-10.synolog y-iscsi:newvirtualdisk.1" --portal" "192.168.0.227:3260" --logout
 Logging out of session [sid: 1, target: iqn.2010-10.synology-iscsi:newvirtualdi
@@ -83,6 +81,7 @@ sudo fdisk -l
 For example, /dev/sdb1 is the vmfs that we want to mount. Just create a mount point (/mnt/vmfs) and use this command to mount it:
 
 ```
+mkdir /mnt/vmfs
 sudo vmfs-fuse /dev/sda1 /mnt/vmfs
 ```
 Now go on with this filesystem under /mnt/vmfs/
