@@ -39,14 +39,15 @@ Ontkoppel de iSCSI Target en stop iSCSI-detectie met de opdrachten umount en isc
 cd /
 umount /mnt/vm
 
-[root@Synology-FedoraVM /]# iscsiadm -m node --targetname" "iqn.2010-10.synolog y-iscsi:newvirtualdisk.1" --portal" "192.168.0.227:3260" --logout
-Logging out of session [sid: 1, target: iqn.2010-10.synology-iscsi:newvirtualdi
-sk.1, portal: 192.168.0.227,3260]
-Logout of [sid: 1, target: iqn.2010-10.synology-iscsi:newvirtualdisk.1, portal:
-192.168.0.227,3260] successful.
+```
+iscsiadm -m node --targetname" "iqn.2010-10.synolog y-iscsi:newvirtualdisk.1" --portal" "192.168.0.227:3260" --logout
+```
+Logging out of session [sid: 1, target: iqn.2010-10.synology-iscsi:newvirtualdisk.1, portal: 192.168.0.227,3260]
+Logout of [sid: 1, target: iqn.2010-10.synology-iscsi:newvirtualdisk.1, portal:192.168.0.227,3260] successful.
 
-[root@Synology-FedoraVM /]# iscsiadm -m discovery --portal "192.168.0.227:3260" --op=delete
-
+```
+iscsiadm -m discovery --portal "192.168.0.227:3260" --op=delete
+```
 
 # How to Mount/Access VMware VMFS filesystems in Ubuntu Linux
 <!-- http://ubuntuguide.net/how-to-mountaccess-vmware-vmfs-filesystems-in-ubuntu-linux -->
